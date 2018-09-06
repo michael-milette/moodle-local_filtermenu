@@ -27,7 +27,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_filtermenu';  // To check on upgrade, that module sits in correct place
-$plugin->version   = 2016090104;          // The current module version (Date: YYYYMMDDXX)
+$plugin->version   = 2016090107;          // The current module version (Date: YYYYMMDDXX)
 $plugin->requires  = 2012062500;          // Requires Moodle version 2.5
 $plugin->release   = '0.1';
 $plugin->maturity  = MATURITY_ALPHA;

@@ -16,60 +16,51 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// Apply filters to Moodle custom menu and custom user menu.
 /**
- * FilterMenu renderer.
+ * Apply filters to Moodle custom menu and custom user menu.
  * @package   local_filtermenu
- * @copyright 2018 TNG Consulting Inc. (https://tngconsulting.ca)
+ * @copyright 2016-2018 TNG Consulting Inc. (https://tngconsulting.ca)
  * @author    Michael Milette
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class local_filtermenu_plugin_renderer extends plugin_renderer_base {
     function navbar_plugin_output() {
-        filtermenu("navbar_plugin_output");
+        filtermenu("local_filtermenu_plugin_renderer");
     }
-}
-function local_filtermenu_render_navbar_output() {
-    filtermenu("local_filtermenu_render_navbar_output");
 }
 
 function local_filtermenu_navbar_plugin_output() {
     filtermenu("local_filtermenu_navbar_plugin_output");
 }
 
+function local_filtermenu_render_navbar_output() {
+    filtermenu("local_filtermenu_render_navbar_output");
+    return '';
+}
+
 if ($CFG->branch >= 30) {
     function local_filtermenu_extend_navigation(global_navigation $navigation) {
-        filtermenu("extend");
+        filtermenu("local_filtermenu_extend_navigation");
     }
 } else {
     function local_filtermenu_extends_navigation(global_navigation $navigation) {
-        filtermenu("extends");
+        filtermenu("local_filtermenu_extends_navigation");
     }
 }
 
-function filtermenu($menuname = "") {
+function filtermenu($fnname = '') { // The $fnname parameter is to show which of the above functions was successful.
     global $CFG, $PAGE;
 
-    // Don't apply auto-linking filters.
-    $filtermanager = filter_manager::instance();
-    $filteroptions = array('originalformat' => FORMAT_HTML, 'noclean' => true);
-    $skipfilters = array('activitynames', 'data', 'glossary', 'sectionnames', 'bookchapters');
-
-    // Filter custom user menu.
-    // Don't filter custom user menu on the settings page. Otherwise it ends up
-    // filtering the customusermenuitems field itself resulting in a loss of the tag.
-    if ($PAGE->pagetype != 'admin-setting-themesettings' && stripos($CFG->customusermenuitems, '{') !== false) {
-        $CFG->customusermenuitems = $filtermanager->filter_text($CFG->customusermenuitems, $PAGE->context, $filteroptions, $skipfilters);
-    }
-
-    // Filter custom menu.
-    // Don't filter custom menu on the settings page. Otherwise it ends up
-    // filtering the custommenuitems field itself resulting in a loss of the tag.
+    // Don't filter menus on Theme Settings page or it will filter the custommenuitems field in the page and loose the tags.
     if ($PAGE->pagetype != 'admin-setting-themesettings' && stripos($CFG->custommenuitems, '{') !== false) {
-        $custommenuitems = $CFG->custommenuitems;
-        if (stripos($custommenuitems, '{') !== false) {
-            $custommenuitems = $filtermanager->filter_text($custommenuitems, $PAGE->context, $filteroptions, $skipfilters);
-        }
-        $CFG->custommenuitems = PHP_EOL . $menuname . PHP_EOL . $custommenuitems;
+
+        // Don't apply auto-linking filters.
+        $filtermanager = filter_manager::instance();
+        $filteroptions = array('originalformat' => FORMAT_HTML, 'noclean' => true);
+        $skipfilters = array('activitynames', 'data', 'glossary', 'sectionnames', 'bookchapters');
+
+        // Filter Custom Menu.
+        $CFG->custommenuitems = $fnname . PHP_EOL . $filtermanager->filter_text($CFG->custommenuitems, $PAGE->context, $filteroptions, $skipfilters);
+
     }
 }

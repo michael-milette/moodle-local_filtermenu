@@ -15,11 +15,11 @@
 // along with FilterMenu.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Privacy Subsystem implementation for local_filtermenu.
+ * Local plugin "Filter Menu" - Privacy provider
  *
  * @package    local_filtermenu
- * @copyright  2015-2018 TNG Consulting Inc. - www.tngconsulting.ca
  * @author     Michael Milette
+ * @copyright  2018-2021 TNG Consulting Inc. <www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,9 +28,11 @@ namespace local_filtermenu\privacy;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Privacy Subsystem for local_filtermenu implementing null_provider.
+ * Privacy Subsystem provider implementing null_provider.
  *
- * @copyright  2018 TNG Consulting Inc. <www.tngconsulting.ca>
+ * @package    local_filtermenu
+ * @author     Michael Milette
+ * @copyright  2018-2021 TNG Consulting Inc. <www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {

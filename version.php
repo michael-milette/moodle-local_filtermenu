@@ -15,19 +15,18 @@
 // along with FilterMenu.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version information
+ * Local plugin "Filter Menu" - Version information
  *
- * @package     local
- * @subpackage  local_filtermenu
- * @copyright   Copyright 2016 TNG Consulting Inc., (www.tngconsulting.ca)
- * @author      Michael Milette
- * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
+ * @package    local_filtermenu
+ * @author     Michael Milette
+ * @copyright  2016-2021 TNG Consulting Inc. <www.tngconsulting.ca>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'local_filtermenu';  // To check on upgrade, that module sits in correct place
-$plugin->version   = 2016090107;          // The current module version (Date: YYYYMMDDXX)
-$plugin->requires  = 2012062500;          // Requires Moodle version 2.5
-$plugin->release   = '0.1';
-$plugin->maturity  = MATURITY_ALPHA;
+$plugin->version = 2021120400;            // The current plugin version (Date: YYYYMMDDXX).
+$plugin->requires = 2016120500;           // Moodle 3.2 or later.
+$plugin->component = 'local_filtermenu';  // Full name of the plugin (used for diagnostics).
+$plugin->release = '0.2.0';
+$plugin->maturity = MATURITY_ALPHA;

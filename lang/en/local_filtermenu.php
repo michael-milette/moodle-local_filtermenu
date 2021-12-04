@@ -15,13 +15,13 @@
 // along with FilterMenu.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * This plugin for Moodle is used to filter tags, such as FilterCodes, in your Moodle custom menu and custom user menu.
+ * Local plugin "Filter Menu" - Language pack
  *
  * Strings for component 'local_filtermenu', language 'en', branch 'MASTER'
  *
  * @package    local_filtermenu
- * @copyright  2016-2018 TNG Consulting Inc. - www.tngconsulting.ca
  * @author     Michael Milette
+ * @copyright  2016-2021 TNG Consulting Inc. <www.tngconsulting.ca>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
